@@ -13,7 +13,7 @@ const materiData = {
         "https://docs.google.com/presentation/d/12PFVGcjT2bWrg4_jCyO7RRoPnQLFX9yR/edit?usp=drive_link&ouid=114736929292569281585&rtpof=true&sd=true",
         "https://docs.google.com/presentation/d/164DGgQDrdR_XR7g72fTUpMupdH54EZmZ/edit?usp=drive_link&ouid=114736929292569281585&rtpof=true&sd=true",
         "https://docs.google.com/presentation/d/1SOnK3RVjZqOnWkWkmi2fRp9_TuQZoXmL/edit?usp=drive_link&ouid=114736929292569281585&rtpof=true&sd=true"
-        "https://docs.google.com/presentation/d/1euF9dFL3_E0fa4i5SAmwI8G4jpIZj_br/edit?usp=sharing&ouid=114736929292569281585&rtpof=true&sd=true"
+        "https://docs.google.com/presentation/d/1euF9dFL3_E0fa4i5SAmwI8G4jpIZj_br/edit?usp=drive_link&ouid=114736929292569281585&rtpof=true&sd=true"
     ],
 
     arkom: [
