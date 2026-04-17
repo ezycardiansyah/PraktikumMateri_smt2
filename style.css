@@ -88,3 +88,19 @@ header {
     font-size: 25px;
     cursor: pointer;
 }
+
+/* RESPONSIVE MOBILE */
+@media (max-width: 768px) {
+    #viewer {
+        width: 95%;
+        height: 70%;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    #meetingList {
+        grid-template-columns: 1fr;
+    }
+}
