@@ -68,6 +68,10 @@ function openCourse(key) {
     }
 }
 
+function isMobile(){
+    return /Android|iPhone/i.test(navigator.userAgent);
+}
+
 
 // kembali
 function goBack() {
@@ -78,8 +82,12 @@ function goBack() {
 
 // preview
 function previewPPT(url) {
-    document.getElementById("modal").style.display = "block";
-    document.getElementById("viewer").src = url;
+    if(isMobile()){
+        window.open(url, "_blank");
+    }else{
+        document.getElementById("modal").style.display = "block";
+        document.getElementById("viewer").src = url;
+    }
 }
 
 
