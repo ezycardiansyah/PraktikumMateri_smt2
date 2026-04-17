@@ -5,7 +5,7 @@ const courses = {
     arkom: "Organisasi & Arsitektur Komputer"
 };
 
-// DATA MATERI (SUDAH MOBILE FRIENDLY)
+// MATERI PPT (MOBILE FIX)
 const materiData = {
 
     instrumentasi: [
