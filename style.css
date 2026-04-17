@@ -1,43 +1,32 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: Arial;
     background: #f4f6f9;
 }
 
-/* HEADER */
 header {
     text-align: center;
     padding: 20px;
-    background: linear-gradient(135deg, #cc2b5e, #753a88);
-    color: rgb(255, 255, 255);
+    background: #2a5298;
+    color: white;
 }
 
-/* MAIN GRID */
 .container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
     gap: 15px;
     padding: 20px;
 }
 
 .card {
-    background: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b);
+    background: linear-gradient(135deg,#4facfe,#00f2fe);
+    color: white;
     padding: 20px;
-    border-radius: 12px;
+    border-radius: 10px;
     text-align: center;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
-    transition: 0.3s;
 }
 
-.card:hover {
-    background: #042372;
-}
-
-/* COURSE PAGE */
 #coursePage {
     display: none;
     padding: 20px;
@@ -45,7 +34,7 @@ header {
 
 #meetingList {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
     gap: 10px;
 }
 
@@ -53,20 +42,14 @@ header {
     background: white;
     padding: 15px;
     border-radius: 8px;
-    cursor: pointer;
     text-align: center;
-}
-
-.meeting:hover {
-    background: #eef3ff;
+    cursor: pointer;
 }
 
 /* MODAL */
 #modal {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.8);
@@ -77,30 +60,12 @@ header {
     height: 80%;
     margin: 5% auto;
     display: block;
-    background: white;
 }
 
-#modal span {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: white;
-    font-size: 25px;
-    cursor: pointer;
-}
-
-/* RESPONSIVE MOBILE */
-@media (max-width: 768px) {
-    #viewer {
-        width: 95%;
-        height: 70%;
-    }
-
-    .container {
-        grid-template-columns: 1fr;
-    }
-
-    #meetingList {
-        grid-template-columns: 1fr;
+/* MOBILE */
+@media(max-width:768px){
+    #viewer{
+        width:95%;
+        height:70%;
     }
 }
