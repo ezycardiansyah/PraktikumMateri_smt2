@@ -30,11 +30,26 @@ const materiData = {
     ],
 
 algoritma: [
-    "https://docs.google.com/file/d/1-P6wl73IczSQdgesgQqtphGDNRuP8e1N/preview",
-    "https://docs.google.com/file/d/1Z2iS_kewGKisuumy69XlA08OuOnLwDXI/preview",
-    "https://docs.google.com/file/d/1vlGC064RplAIsDcgqkVQQta_nNmATniE/preview",
-    "https://drive.google.com/file/d/19DuTperB1PCXZYSBdtUjPbmZCHNQEQTv/preview",
-    "https://drive.google.com/file/d/1lhfkb_Nhe403DxUsI4lBNzsZLq9j1Zy3/preview"
+    {
+        url: "https://docs.google.com/file/d/1-P6wl73IczSQdgesgQqtphGDNRuP8e1N/preview",
+        type: "embed"
+    },
+    {
+        url: "https://docs.google.com/file/d/1Z2iS_kewGKisuumy69XlA08OuOnLwDXI/preview",
+        type: "embed"
+    },
+    {
+        url: "https://docs.google.com/file/d/1vlGC064RplAIsDcgqkVQQta_nNmATniE/preview",
+        type: "embed"
+    },
+    {
+        url: "https://drive.google.com/file/d/19DuTperB1PCXZYSBdtUjPbmZCHNQEQTv/view",
+        type: "newtab"
+    },
+    {
+        url: "https://drive.google.com/file/d/1lhfkb_Nhe403DxUsI4lBNzsZLq9j1Zy3/view",
+        type: "newtab"
+    }
 ]
 
 };
@@ -57,10 +72,11 @@ function openCourse(key) {
         div.className = "meeting";
         div.innerText = "Pertemuan " + i;
 
-        if (data[i - 1]) {
-            div.onclick = function () {
-                previewPPT(data[i - 1]);
-            };
+    if (data[i - 1]) {
+        div.onclick = function () {
+            previewPPT(data[i - 1]);
+        };
+    }
         } else {
             div.style.opacity = "0.4";
             div.innerText += " (Belum ada)";
@@ -83,13 +99,25 @@ function goBack() {
 
 
 // preview
-function previewPPT(url) {
-    if(isMobile()){
+function previewPPT(item) {
+
+    let url = item.url;
+    let type = item.type;
+
+    if (isMobile()) {
         window.open(url, "_blank");
-    }else{
-        document.getElementById("modal").style.display = "block";
-        document.getElementById("viewer").src = url;
+        return;
     }
+
+    // kalau tidak bisa embed → buka tab baru
+    if (type === "newtab") {
+        window.open(url, "_blank");
+        return;
+    }
+
+    // kalau embed
+    document.getElementById("modal").style.display = "block";
+    document.getElementById("viewer").src = url;
 }
 
 
