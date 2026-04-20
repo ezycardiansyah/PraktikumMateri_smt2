@@ -32,7 +32,9 @@ const materiData = {
     algoritma: [
         "https://drive.google.com/file/d/1-P6wl73IczSQdgesgQqtphGDNRuP8e1N/preview",
         "https://drive.google.com/file/d/1Z2iS_kewGKisuumy69XlA08OuOnLwDXI/preview",
-        "https://drive.google.com/file/d/1vlGC064RplAIsDcgqkVQQta_nNmATniE/preview"
+        "https://drive.google.com/file/d/1vlGC064RplAIsDcgqkVQQta_nNmATniE/preview",
+        "https://drive.google.com/file/d/19DuTperB1PCXZYSBdtUjPbmZCHNQEQTv/preview",
+        "https://drive.google.com/file/d/1lhfkb_Nhe403DxUsI4lBNzsZLq9j1Zy3/preview",
     ]
 
 };
