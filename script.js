@@ -29,13 +29,13 @@ const materiData = {
         "https://docs.google.com/presentation/d/1cnXAETIIXfx11wo0w1xnvjNLG-c9egYT/embed"
     ],
 
-    algoritma: [
-        "https://docs.google.com/file/d/1-P6wl73IczSQdgesgQqtphGDNRuP8e1N/embed",
-        "https://docs.google.com/file/d/1Z2iS_kewGKisuumy69XlA08OuOnLwDXI/embed",
-        "https://docs.google.com/file/d/1vlGC064RplAIsDcgqkVQQta_nNmATniE/embed",
-        "https://drive.google.com/file/d/19DuTperB1PCXZYSBdtUjPbmZCHNQEQTv/view?usp=drive_link",
-        "https://drive.google.com/file/d/1lhfkb_Nhe403DxUsI4lBNzsZLq9j1Zy3/view?usp=drive_link",
-    ]
+algoritma: [
+    "https://docs.google.com/file/d/1-P6wl73IczSQdgesgQqtphGDNRuP8e1N/preview",
+    "https://docs.google.com/file/d/1Z2iS_kewGKisuumy69XlA08OuOnLwDXI/preview",
+    "https://docs.google.com/file/d/1vlGC064RplAIsDcgqkVQQta_nNmATniE/preview",
+    "https://drive.google.com/file/d/19DuTperB1PCXZYSBdtUjPbmZCHNQEQTv/preview",
+    "https://drive.google.com/file/d/1lhfkb_Nhe403DxUsI4lBNzsZLq9j1Zy3/preview"
+]
 
 };
 
