@@ -72,18 +72,21 @@ function openCourse(key) {
         div.className = "meeting";
         div.innerText = "Pertemuan " + i;
 
+for (let i = 1; i <= 14; i++) {
+    let div = document.createElement("div");
+    div.className = "meeting";
+    div.innerText = "Pertemuan " + i;
+
     if (data[i - 1]) {
         div.onclick = function () {
             previewPPT(data[i - 1]);
         };
+    } else {
+        div.style.opacity = "0.4";
+        div.innerText += " (Belum ada)";
     }
-        } else {
-            div.style.opacity = "0.4";
-            div.innerText += " (Belum ada)";
-        }
 
-        list.appendChild(div);
-    }
+    list.appendChild(div);
 }
 
 function isMobile(){
