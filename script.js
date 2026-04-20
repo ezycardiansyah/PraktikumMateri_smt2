@@ -30,11 +30,11 @@ const materiData = {
     ],
 
     algoritma: [
-        "https://drive.google.com/file/d/1-P6wl73IczSQdgesgQqtphGDNRuP8e1N/embed",
-        "https://drive.google.com/file/d/1Z2iS_kewGKisuumy69XlA08OuOnLwDXI/embedw",
-        "https://drive.google.com/file/d/1vlGC064RplAIsDcgqkVQQta_nNmATniE/embed",
-        "https://drive.google.com/file/d/19DuTperB1PCXZYSBdtUjPbmZCHNQEQTv/embed",
-        "https://drive.google.com/file/d/1lhfkb_Nhe403DxUsI4lBNzsZLq9j1Zy3/embed",
+        "https://docs.google.com/file/d/1-P6wl73IczSQdgesgQqtphGDNRuP8e1N/embed",
+        "https://docs.google.com/file/d/1Z2iS_kewGKisuumy69XlA08OuOnLwDXI/embed",
+        "https://docs.google.com/file/d/1vlGC064RplAIsDcgqkVQQta_nNmATniE/embed",
+        "https://docs.google.com/file/d/19DuTperB1PCXZYSBdtUjPbmZCHNQEQTv/embed",
+        "https://docs.google.com/file/d/1lhfkb_Nhe403DxUsI4lBNzsZLq9j1Zy3/embed",
     ]
 
 };
