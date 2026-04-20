@@ -1,3 +1,6 @@
+// ========================
+// DATA COURSE
+// ========================
 const courses = {
     algoritma: "Algoritma & Struktur Data",
     instrumentasi: "Sistem Instrumentasi",
@@ -5,7 +8,9 @@ const courses = {
     arkom: "Organisasi & Arsitektur Komputer"
 };
 
-// DATA LINK PPT
+// ========================
+// DATA MATERI
+// ========================
 const materiData = {
 
     instrumentasi: [
@@ -29,33 +34,33 @@ const materiData = {
         "https://docs.google.com/presentation/d/1cnXAETIIXfx11wo0w1xnvjNLG-c9egYT/embed"
     ],
 
-algoritma: [
-    {
-        url: "https://docs.google.com/file/d/1-P6wl73IczSQdgesgQqtphGDNRuP8e1N/preview",
-        type: "embed"
-    },
-    {
-        url: "https://docs.google.com/file/d/1Z2iS_kewGKisuumy69XlA08OuOnLwDXI/preview",
-        type: "embed"
-    },
-    {
-        url: "https://docs.google.com/file/d/1vlGC064RplAIsDcgqkVQQta_nNmATniE/preview",
-        type: "embed"
-    },
-    {
-        url: "https://drive.google.com/file/d/19DuTperB1PCXZYSBdtUjPbmZCHNQEQTv/view",
-        type: "newtab"
-    },
-    {
-        url: "https://drive.google.com/file/d/1lhfkb_Nhe403DxUsI4lBNzsZLq9j1Zy3/view",
-        type: "newtab"
-    }
-]
-
+    algoritma: [
+        {
+            url: "https://docs.google.com/file/d/1-P6wl73IczSQdgesgQqtphGDNRuP8e1N/preview",
+            type: "embed"
+        },
+        {
+            url: "https://docs.google.com/file/d/1Z2iS_kewGKisuumy69XlA08OuOnLwDXI/preview",
+            type: "embed"
+        },
+        {
+            url: "https://docs.google.com/file/d/1vlGC064RplAIsDcgqkVQQta_nNmATniE/preview",
+            type: "embed"
+        },
+        {
+            url: "https://drive.google.com/file/d/19DuTperB1PCXZYSBdtUjPbmZCHNQEQTv/view",
+            type: "newtab"
+        },
+        {
+            url: "https://drive.google.com/file/d/1lhfkb_Nhe403DxUsI4lBNzsZLq9j1Zy3/view",
+            type: "newtab"
+        }
+    ]
 };
 
-
-// buka praktikum
+// ========================
+// OPEN COURSE
+// ========================
 function openCourse(key) {
     document.getElementById("mainPage").style.display = "none";
     document.getElementById("coursePage").style.display = "block";
@@ -70,61 +75,87 @@ function openCourse(key) {
     for (let i = 1; i <= 14; i++) {
         let div = document.createElement("div");
         div.className = "meeting";
-        div.innerText = "Pertemuan " + i;
 
-for (let i = 1; i <= 14; i++) {
-    let div = document.createElement("div");
-    div.className = "meeting";
-    div.innerText = "Pertemuan " + i;
+        // kasih icon biar beda
+        let label = "Pertemuan " + i;
 
-    if (data[i - 1]) {
-        div.onclick = function () {
-            previewPPT(data[i - 1]);
-        };
-    } else {
-        div.style.opacity = "0.4";
-        div.innerText += " (Belum ada)";
+        if (data[i - 1]) {
+
+            // cek tipe data (string atau object)
+            let item = data[i - 1];
+            let type = typeof item === "string" ? "embed" : item.type;
+
+            if (type === "newtab") {
+                label += " 🔗";
+            } else {
+                label += " 📄";
+            }
+
+            div.onclick = function () {
+                previewPPT(item);
+            };
+
+        } else {
+            div.style.opacity = "0.4";
+            label += " (Belum ada)";
+        }
+
+        div.innerText = label;
+        list.appendChild(div);
     }
-
-    list.appendChild(div);
 }
 
-function isMobile(){
+// ========================
+// DETEKSI MOBILE
+// ========================
+function isMobile() {
     return /Android|iPhone/i.test(navigator.userAgent);
 }
 
-
-// kembali
-function goBack() {
-    document.getElementById("mainPage").style.display = "grid";
-    document.getElementById("coursePage").style.display = "none";
-}
-
-
-// preview
+// ========================
+// PREVIEW / OPEN FILE
+// ========================
 function previewPPT(item) {
 
-    let url = item.url;
-    let type = item.type;
+    let url, type;
 
+    if (typeof item === "string") {
+        url = item;
+        type = "embed";
+    } else {
+        url = item.url;
+        type = item.type;
+    }
+
+    // mobile → selalu tab baru
     if (isMobile()) {
         window.open(url, "_blank");
         return;
     }
 
-    // kalau tidak bisa embed → buka tab baru
+    // file yang tidak bisa embed
     if (type === "newtab") {
         window.open(url, "_blank");
         return;
     }
 
-    // kalau embed
+    // tampilkan di modal
     document.getElementById("modal").style.display = "block";
     document.getElementById("viewer").src = url;
 }
 
+// ========================
+// KEMBALI
+// ========================
+function goBack() {
+    document.getElementById("mainPage").style.display = "grid";
+    document.getElementById("coursePage").style.display = "none";
+}
 
-// close
+// ========================
+// CLOSE MODAL
+// ========================
 function closeModal() {
     document.getElementById("modal").style.display = "none";
+    document.getElementById("viewer").src = "";
 }
