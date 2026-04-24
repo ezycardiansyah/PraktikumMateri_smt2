@@ -2,6 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>MATERI PRAKTIKUM</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -14,10 +15,10 @@
 
 <!-- LIST PRAKTIKUM -->
 <div class="container" id="mainPage">
-    <div class="card" onclick="openCourse('algoritma')">Algoritma & Struktur Data</div>
+    <div class="card" onclick="openCourse('algoritma')">Algoritma &amp; Struktur Data</div>
     <div class="card" onclick="openCourse('instrumentasi')">Sistem Instrumentasi</div>
     <div class="card" onclick="openCourse('statistika')">Statistika Informatika</div>
-    <div class="card" onclick="openCourse('arkom')">Organisasi & Arsitektur Komputer</div>
+    <div class="card" onclick="openCourse('arkom')">Organisasi &amp; Arsitektur Komputer</div>
 </div>
 
 <!-- HALAMAN PERTEMUAN -->
@@ -30,7 +31,7 @@
 <!-- MODAL -->
 <div id="modal">
     <span onclick="closeModal()">✖</span>
-    <iframe id="viewer"></iframe>
+    <iframe id="viewer" title="PPT Viewer"></iframe>
 </div>
 
 <script src="script.js"></script>
