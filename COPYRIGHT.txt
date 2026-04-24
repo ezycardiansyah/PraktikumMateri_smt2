@@ -1,0 +1,42 @@
+================================================================================
+                              COPYRIGHT NOTICE
+================================================================================
+
+Copyright © 2026 EzyCardiansyahFizri049
+
+Software: Materi Praktikum Kelas B
+Type: Educational Website
+Created: 2026
+Last Updated: 24 April 2026
+
+================================================================================
+                                LISENSI
+================================================================================
+
+Website ini dan seluruh source code-nya dilindungi hak cipta.
+
+Anda diperbolehkan untuk:
+✓ Menggunakan website ini untuk keperluan pribadi dan pendidikan
+✓ Membagikan link website kepada orang lain
+
+Anda TIDAK diperbolehkan untuk:
+✗ Menjual atau mengkomersialkan website ini
+✗ Menghapus atau mengubah copyright notice
+✗ Mengklaim sebagai karya sendiri
+
+================================================================================
+                            KONTAK DEVELOPER
+================================================================================
+
+Nama         : EzyCardiansyahFizri049
+Role         : Web Developer
+Project      : Materi Praktikum Kelas B
+
+================================================================================
+                               TANDA TANGAN
+================================================================================
+
+Developer,
+EzyCardiansyahFizri049
+
+================================================================================
