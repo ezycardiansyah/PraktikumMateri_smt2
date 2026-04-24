@@ -35,12 +35,28 @@ header {
 
 .card:hover {
     background: #042372;
+    transform: translateY(-3px);
 }
 
 /* COURSE PAGE */
 #coursePage {
     display: none;
     padding: 20px;
+}
+
+#coursePage button {
+    background: #753a88;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+#coursePage button:hover {
+    background: #cc2b5e;
 }
 
 #meetingList {
@@ -53,12 +69,14 @@ header {
     background: white;
     padding: 15px;
     border-radius: 8px;
-    cursor: pointer;
     text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.meeting:hover {
+.meeting[style*="cursor: pointer"]:hover {
     background: #eef3ff;
+    transform: translateY(-2px);
 }
 
 /* MODAL */
@@ -70,6 +88,7 @@ header {
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.8);
+    z-index: 1000;
 }
 
 #viewer {
@@ -78,6 +97,7 @@ header {
     margin: 5% auto;
     display: block;
     background: white;
+    border: none;
 }
 
 #modal span {
@@ -85,6 +105,11 @@ header {
     top: 20px;
     right: 30px;
     color: white;
-    font-size: 25px;
+    font-size: 35px;
     cursor: pointer;
+    z-index: 1001;
+}
+
+#modal span:hover {
+    color: #cc2b5e;
 }
