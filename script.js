@@ -1,93 +1,316 @@
-const courses = {
-    algoritma: "Algoritma & Struktur Data",
-    instrumentasi: "Sistem Instrumentasi",
-    statistika: "Statistika Informatika",
-    arkom: "Organisasi & Arsitektur Komputer"
-};
+// Main JavaScript file for portfolio website
 
-const materiData = {
-    instrumentasi: [
-        "https://docs.google.com/presentation/d/1HPhwFV5DUsit1mmEZpHQYWNOFEonnEtM/embed",
-        "https://docs.google.com/presentation/d/12PFVGcjT2bWrg4_jCyO7RRoPnQLFX9yR/embed",
-        "https://docs.google.com/presentation/d/164DGgQDrdR_XR7g72fTUpMupdH54EZmZ/embed",
-        "https://docs.google.com/presentation/d/1SOnK3RVjZqOnWkWkmi2fRp9_TuQZoXmL/embed",
-        "https://docs.google.com/presentation/d/1euF9dFL3_E0fa4i5SAmwI8G4jpIZj_br/embed"
-    ],
-    arkom: [
-        "https://docs.google.com/presentation/d/1OwjOPa1JU44WSVBULojch8pyQHuHbu-v/embed",
-        "https://docs.google.com/presentation/d/186gFqXgFqN9v2HG2JK2tVR8Jj5bAhhNt/embed",
-        "https://docs.google.com/presentation/d/1xA34MmpcZ7MEp3Qk1MvXQGeNc_Ar6-Hr/embed",
-        "https://docs.google.com/presentation/d/18_4SRBptVTsDmdj_8WYDiLtg8LE_7dDZ/embed",
-        "https://docs.google.com/presentation/d/1MOkopFqUYTT_9t4W67YJg6jO0m-75L1E/embed",
-        "https://docs.google.com/presentation/d/1jJG6bWhHFxRyIY4xufMyCfhbPlozXPRS/embed"
-    ],
-    statistika: [
-        "https://docs.google.com/presentation/d/123FdM-YHtdiPKRoxJic2znIm-llG1NGZ/embed",
-        "https://docs.google.com/presentation/d/1k6EDWHwrzxrmlbERgb69dtaODNsM3p85/embed",
-        "https://docs.google.com/presentation/d/1cnXAETIIXfx11wo0w1xnvjNLG-c9egYT/embed",
-        "https://docs.google.com/presentation/d/1WOG0OxpKvkm7JxiU7cqlBjyvEBy8nvHk/embed",
-        "https://docs.google.com/presentation/d/1lmdlrO1Ai12yh41vwYnZReaiQ1abBAHt/embed",
-    ],
-    algoritma: [
-        "https://docs.google.com/file/d/1-P6wl73IczSQdgesgQqtphGDNRuP8e1N/preview",
-        "https://docs.google.com/file/d/1Z2iS_kewGKisuumy69XlA08OuOnLwDXI/preview",
-        "https://docs.google.com/file/d/1vlGC064RplAIsDcgqkVQQta_nNmATniE/preview",
-        "https://drive.google.com/file/d/19DuTperB1PCXZYSBdtUjPbmZCHNQEQTv/preview",
-        "https://drive.google.com/file/d/1lhfkb_Nhe403DxUsI4lBNzsZLq9j1Zy3/preview"
-    ]
-};
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize AOS (Animate On Scroll)
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
+    });
 
-function openCourse(key) {
-    document.getElementById("mainPage").style.display = "none";
-    document.getElementById("coursePage").style.display = "block";
-    document.getElementById("courseTitle").innerText = courses[key];
-    
-    var list = document.getElementById("meetingList");
-    list.innerHTML = "";
-    
-    var data = materiData[key] || [];
-    
-    for (var i = 1; i <= 14; i++) {
-        var div = document.createElement("div");
-        div.className = "meeting";
-        div.innerText = "Pertemuan " + i;
+    // Enhanced timeline hover effects
+    document.querySelectorAll('.timeline-content').forEach(content => {
+        content.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateX(10px)';
+            const icon = this.querySelector('.timeline-icon');
+            if (icon) {
+                icon.style.transform = 'scale(1.2)';
+                icon.style.color = 'var(--secondary-color)';
+            }
+        });
         
-        if (data[i - 1]) {
-            div.onclick = (function(url) {
-                return function() {
-                    previewPPT(url);
-                };
-            })(data[i - 1]);
-            div.style.cursor = "pointer";
-        } else {
-            div.style.opacity = "0.4";
-            div.style.cursor = "not-allowed";
-            div.innerText += " (Belum ada)";
+        content.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateX(0)';
+            const icon = this.querySelector('.timeline-icon');
+            if (icon) {
+                icon.style.transform = 'scale(1)';
+                icon.style.color = 'var(--primary-color)';
+            }
+        });
+    });
+
+    // Animate timeline items on scroll
+    const timelineObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateX(0)';
+            }
+        });
+    }, {
+        threshold: 0.2
+    });
+
+    document.querySelectorAll('.timeline-item').forEach(item => {
+        item.style.opacity = '0';
+        item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        
+        if (item.classList.contains('fade-right')) {
+            item.style.transform = 'translateX(-50px)';
+        } else if (item.classList.contains('fade-left')) {
+            item.style.transform = 'translateX(50px)';
         }
         
-        list.appendChild(div);
+        timelineObserver.observe(item);
+    });
+
+    // Animate summary cards
+    const summaryObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, {
+        threshold: 0.2
+    });
+
+    document.querySelectorAll('.summary-card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        summaryObserver.observe(card);
+    });
+    
+    // Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlRoot = document.getElementById('html-root');
+    const themeIcon = themeToggle ? themeToggle.querySelector('i') : null;
+    
+    if (themeToggle && themeIcon) {
+        // Check for saved theme or prefered color scheme
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        // Set initial theme
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            htmlRoot.setAttribute('data-theme', 'dark');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        themeToggle.addEventListener('click', function() {
+            if (htmlRoot.getAttribute('data-theme') === 'dark') {
+                htmlRoot.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                htmlRoot.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        });
     }
-}
-
-function isMobile() {
-    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-}
-
-function goBack() {
-    document.getElementById("mainPage").style.display = "grid";
-    document.getElementById("coursePage").style.display = "none";
-}
-
-function previewPPT(url) {
-    if (isMobile()) {
-        window.open(url, "_blank");
-    } else {
-        document.getElementById("modal").style.display = "block";
-        document.getElementById("viewer").src = url;
+    
+    // Language Toggle
+    const langToggle = document.getElementById('lang-toggle');
+    
+    if (langToggle && typeof translations !== 'undefined') {
+        const langFlag = langToggle.querySelector('.lang-flag');
+        const langText = langToggle.querySelector('.lang-text');
+        
+        // Check for saved language
+        let currentLang = localStorage.getItem('language') || 'id';
+        
+        // Set initial language
+        updateLanguage(currentLang);
+        
+        langToggle.addEventListener('click', function() {
+            currentLang = currentLang === 'en' ? 'id' : 'en';
+            localStorage.setItem('language', currentLang);
+            updateLanguage(currentLang);
+        });
+        
+        function updateLanguage(lang) {
+            // Update flag and text
+            if (langFlag && langText) {
+                if (lang === 'en') {
+                    langFlag.textContent = '🇺🇸';
+                    langText.textContent = 'EN';
+                } else {
+                    langFlag.textContent = '🇮🇩';
+                    langText.textContent = 'ID';
+                }
+            }
+            
+            // Update all elements with data-lang-key attribute
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (translations[lang] && translations[lang][key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        if (element.getAttribute('placeholder') !== undefined) {
+                            element.setAttribute('placeholder', translations[lang][key]);
+                        }
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+        }
     }
-}
-
-function closeModal() {
-    document.getElementById("modal").style.display = "none";
-    document.getElementById("viewer").src = "";
-}
+    
+    // Loading Animation
+    const loadingScreen = document.getElementById('loading-screen');
+    if (loadingScreen) {
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                loadingScreen.style.opacity = '0';
+                loadingScreen.style.visibility = 'hidden';
+            }, 1000);
+        });
+    }
+    
+    // Mobile Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+    }
+    
+    // Update active nav link on scroll
+    window.addEventListener('scroll', function() {
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.scrollY >= (sectionTop - 200)) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+    
+    // Back to Top Button
+    const backToTop = document.getElementById('backToTop');
+    
+    if (backToTop) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+    
+    // Animate skill bars on scroll
+    const skillBars = document.querySelectorAll('.skill-progress');
+    
+    const animateSkillBars = () => {
+        skillBars.forEach(bar => {
+            const width = bar.getAttribute('data-width');
+            const barPosition = bar.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.2;
+            
+            if (barPosition < screenPosition && width && !bar.classList.contains('animated')) {
+                bar.style.width = width + '%';
+                bar.classList.add('animated');
+            }
+        });
+    };
+    
+    // Initialize skill bars on page load
+    window.addEventListener('load', animateSkillBars);
+    window.addEventListener('scroll', animateSkillBars);
+    
+    // Contact Form Submission
+    const contactForm = document.getElementById('contactForm');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            
+            alert(`Thank you for your message, ${name}! I'll get back to you soon at ${email}.`);
+            contactForm.reset();
+        });
+    }
+    
+    // Parallax effect for background elements
+    window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const circles = document.querySelectorAll('.bg-circle');
+        
+        circles.forEach((circle, index) => {
+            const speed = 0.5 + (index * 0.1);
+            const yPos = -(scrolled * speed);
+            circle.style.transform = `translateY(${yPos}px)`;
+        });
+    });
+    
+    // Add hover effect to glass cards
+    const glassCards = document.querySelectorAll('.glass-card');
+    
+    glassCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+    
+    // Initialize floating elements animation
+    const floatElements = document.querySelectorAll('.float-element');
+    
+    floatElements.forEach((element, index) => {
+        element.style.animationDelay = `${index * 0.5}s`;
+    });
+    
+    // Form input focus effects
+    const formInputs = document.querySelectorAll('.contact-form input, .contact-form textarea');
+    
+    formInputs.forEach(input => {
+        const parent = input.parentElement;
+        input.addEventListener('focus', function() {
+            if (parent) parent.classList.add('focused');
+        });
+        
+        input.addEventListener('blur', function() {
+            if (this.value === '' && parent) {
+                parent.classList.remove('focused');
+            }
+        });
+    });
+});
