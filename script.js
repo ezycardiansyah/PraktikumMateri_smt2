@@ -22,7 +22,9 @@ const materiData = {
     statistika: [
         "https://docs.google.com/presentation/d/123FdM-YHtdiPKRoxJic2znIm-llG1NGZ/embed",
         "https://docs.google.com/presentation/d/1k6EDWHwrzxrmlbERgb69dtaODNsM3p85/embed",
-        "https://docs.google.com/presentation/d/1cnXAETIIXfx11wo0w1xnvjNLG-c9egYT/embed"
+        "https://docs.google.com/presentation/d/1cnXAETIIXfx11wo0w1xnvjNLG-c9egYT/embed",
+        "https://docs.google.com/presentation/d/1WOG0OxpKvkm7JxiU7cqlBjyvEBy8nvHk/embed",
+        "https://docs.google.com/presentation/d/1lmdlrO1Ai12yh41vwYnZReaiQ1abBAHt/embed",
     ],
     algoritma: [
         "https://docs.google.com/file/d/1-P6wl73IczSQdgesgQqtphGDNRuP8e1N/preview",
