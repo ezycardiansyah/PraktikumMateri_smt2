@@ -1,6 +1,6 @@
 # UPDATE & PERBAIKAN WEBSITE MATERI PRAKTIKUM
 
-**Tanggal Update:** 24 April 2026  
+**Tanggal Update:** 24 April 2026 → **01 Juni 2026**  
 **Status:** ✅ LIVE & WORKING
 
 ---
@@ -27,6 +27,7 @@
 | 4 | Mobile responsive | Deteksi otomatis perangkat mobile (buka di tab baru) |
 | 5 | Close modal | Tombol close (✖) berfungsi dengan baik |
 | 6 | Loading fallback | Mengosongkan iframe saat modal ditutup |
+| 7 | Label Pertemuan UJIAN | Deteksi otomatis pertemuan ujian via pola URL `/d/../` dan menampilkan label **(UJIAN)** pada tombol |
 
 ---
 
@@ -39,6 +40,7 @@
 | 3 | Meeting item | Tidak ada bayangan | Menambahkan box-shadow |
 | 4 | Modal close button | Kecil (25px) | Lebih besar (35px) + hover merah |
 | 5 | Disabled meeting | Hanya opacity | Opacity + cursor not-allowed |
+| 6 | Tombol UJIAN | Tidak ada styling khusus | Background ungu-merah + teks putih bold + cursor not-allowed |
 
 ---
 
@@ -124,5 +126,37 @@
 
 ---
 
+## 10. DETAIL UPDATE 01 JUNI 2026
+
+### Perubahan pada `script.js` — Fungsi `openCourse()`
+
+**Masalah:** Pertemuan ujian tidak memiliki penanda visual, tampilannya sama seperti pertemuan biasa yang belum ada materi *(Belum ada)*.
+
+**Solusi:** Menambahkan deteksi otomatis pertemuan ujian berdasarkan pola URL `/d/../`.
+
+#### Pertemuan yang terdampak:
+
+| Mata Kuliah | Pertemuan | Label Lama | Label Baru |
+|-------------|-----------|------------|------------|
+| Sistem Instrumentasi | 7 | *(Belum ada)* | **(UJIAN)** |
+| Organisasi & Arsitektur Komputer | 7 | *(Belum ada)* | **(UJIAN)** |
+| Statistika Informatika | 6 | *(Belum ada)* | **(UJIAN)** |
+| Algoritma & Struktur Data | 6 | *(Belum ada)* | **(UJIAN)** |
+
+#### Detail teknis perubahan kode:
+
+| Bagian | Perubahan |
+|--------|-----------|
+| Variabel baru `url` | Mengambil URL per pertemuan di awal loop |
+| Variabel baru `isUjian` | Mengecek apakah URL mengandung `/d/../` |
+| Kondisi `if` | Ditambah cabang baru untuk kasus ujian (dari 2 menjadi 3 kondisi) |
+| Label teks | Pertemuan ujian menampilkan `(UJIAN)` bukan `(Belum ada)` |
+| Styling tombol | Background ungu-merah, teks putih bold, cursor not-allowed |
+| `div.innerText` | Dipindah masuk ke masing-masing kondisi (tidak lagi di awal loop) |
+| Nama parameter closure | Diganti dari `url` menjadi `u` untuk menghindari konflik variabel |
+
+---
+
 *Dibuat oleh: Tim Pengembang*  
-*Terakhir diupdate: 24 April 2026*
+*Terakhir diupdate: 01 Juni 2026*
+
